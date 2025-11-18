@@ -3,8 +3,8 @@ name: Update Marketplace Index
 on:
   push:
     paths:
-      - 'presets/**.json'
-  workflow_dispatch:
+      - 'presets/**.json' # Trigger kalau ada preset baru
+  workflow_dispatch: # Trigger manual
 
 permissions:
   contents: write
@@ -16,8 +16,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          ref: main # Pastikan kita checkout branch main, bukan detached HEAD
-          fetch-depth: 0 # Ambil semua history biar aman buat rebase
+          ref: main # Wajib checkout branch main
+          fetch-depth: 0 # Ambil semua history buat rebase
 
       - name: Create Indexing Script
         run: |
@@ -44,6 +44,7 @@ jobs:
                               with open(os.path.join(presets_dir, f), 'r', encoding='utf-8') as file:
                                   data = json.load(file)
                                   meta = data.get('meta', {})
+                                  # Bikin ID dan URL Download
                                   meta['id'] = data.get('id', f.replace('.json', ''))
                                   meta['filename'] = f
                                   meta['download_url'] = f'https://raw.githubusercontent.com/{repo}/{branch}/{presets_dir}/{f}'
@@ -54,12 +55,13 @@ jobs:
                           except Exception as e:
                               print(f"❌ Error reading {f}: {e}")
 
+              # Urutkan dari yang terbaru
               index_list.sort(key=lambda x: x.get('created_at', 0), reverse=True)
+              
+              print(f"📦 Total items indexed: {len(index_list)}")
               
               with open(output_file, 'w', encoding='utf-8') as f:
                   json.dump(index_list, f, indent=2)
-                  
-              print(f"🎉 Indexing complete! Total items: {len(index_list)}")
 
           except Exception as main_err:
               print(f"🔥 CRITICAL ERROR: {main_err}")
@@ -76,17 +78,16 @@ jobs:
           
           git add marketplace.json
           
+          # Cek apakah marketplace.json berubah
           if git diff --staged --quiet; then
-            echo "No changes to marketplace.json"
+            echo "✅ No changes to marketplace.json. Skipping commit."
           else
             git commit -m "Auto-update marketplace index [skip ci]"
             
-            # --- BAGIAN PENTING (THE FIX) ---
-            # Tarik perubahan terbaru dari server dulu sebelum nge-push
-            # Biar gak ditolak sama GitHub
-            echo "🔄 Pulling latest changes..."
+            # --- JURUS ANTI BENTROK (THE FIX) ---
+            echo "🔄 Pulling latest changes from remote..."
             git pull --rebase origin main
             
-            echo "🚀 Pushing changes..."
+            echo "🚀 Pushing to GitHub..."
             git push origin main
           fi
