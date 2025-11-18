@@ -3,8 +3,8 @@ name: Update Marketplace Index
 on:
   push:
     paths:
-      - 'presets/**.json' # Robot bangun kalau ada file JSON baru di folder presets
-  workflow_dispatch: # Tombol manual buat memaksa robot kerja
+      - 'presets/**.json' # Trigger kalau ada file JSON baru di folder presets
+  workflow_dispatch: # Tombol manual buat trigger
 
 permissions:
   contents: write
@@ -16,63 +16,81 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Generate Marketplace Index
+      - name: Create Indexing Script
         run: |
-          python3 -c "
-          import os, json
-          
-          index_list = []
-          # GANTI USER DI BAWAH INI SESUAI USERNAME GITHUB LU BIAR URL-NYA BENER
-          # Atau biarkan script ini mendeteksi otomatis:
-          repo_full_name = '${{ github.repository }}'
-          branch = 'main'
-          
-          presets_dir = 'presets'
-          output_file = 'marketplace.json'
-          
-          print(f'Scanning {presets_dir} in {repo_full_name}...')
+          cat << 'EOF' > indexer.py
+          import os
+          import json
+          import sys
 
-          if os.path.exists(presets_dir):
-              for f in os.listdir(presets_dir):
-                  if f.endswith('.json'):
-                      try:
-                          with open(os.path.join(presets_dir, f), 'r') as file:
-                              data = json.load(file)
-                              # Ambil metadata
-                              meta = data.get('meta', {})
-                              
-                              # Tambah field ID & Download URL buat Frontend
-                              meta['id'] = data.get('id', f.replace('.json', ''))
-                              meta['filename'] = f
-                              meta['download_url'] = f'https://raw.githubusercontent.com/{repo_full_name}/{branch}/{presets_dir}/{f}'
-                              
-                              # Pastikan ada nama, kalau gak skip
-                              if meta.get('name'):
-                                  index_list.append(meta)
-                                  print(f'Indexed: {meta.get('name')}')
-                      except Exception as e:
-                          print(f'Error reading {f}: {e}')
-          
-          # Urutkan dari yang terbaru (berdasarkan created_at)
-          index_list.sort(key=lambda x: x.get('created_at', 0), reverse=True)
-          
-          print(f'Total items: {len(index_list)}')
-          
-          with open(output_file, 'w') as f:
-              json.dump(index_list, f, indent=2)
-          "
+          try:
+              index_list = []
+              # Ambil variabel dari Environment biar aman
+              repo = os.environ.get('GITHUB_REPOSITORY')
+              branch = 'main'
+              
+              presets_dir = 'presets'
+              output_file = 'marketplace.json'
+              
+              print(f"🚀 Starting indexing for {repo}...")
 
-      - name: Commit and Push Index
+              if not os.path.exists(presets_dir):
+                  print(f"⚠️ Warning: Folder '{presets_dir}' not found. Creating empty index.")
+              else:
+                  for f in os.listdir(presets_dir):
+                      if f.endswith('.json'):
+                          file_path = os.path.join(presets_dir, f)
+                          try:
+                              with open(file_path, 'r', encoding='utf-8') as file:
+                                  data = json.load(file)
+                                  # Ambil metadata
+                                  meta = data.get('meta', {})
+                                  
+                                  # Tambah field penting buat frontend
+                                  meta['id'] = data.get('id', f.replace('.json', ''))
+                                  meta['filename'] = f
+                                  # URL Download Raw
+                                  meta['download_url'] = f'https://raw.githubusercontent.com/{repo}/{branch}/{presets_dir}/{f}'
+                                  
+                                  # Validasi minimal
+                                  if meta.get('name'):
+                                      index_list.append(meta)
+                                      print(f"✅ Indexed: {meta.get('name')}")
+                                  else:
+                                      print(f"⏩ Skipped {f}: No name in metadata")
+                                      
+                          except Exception as e:
+                              print(f"❌ Error reading {f}: {e}")
+
+              # Urutkan dari yang terbaru
+              index_list.sort(key=lambda x: x.get('created_at', 0), reverse=True)
+              
+              print(f"📦 Total items: {len(index_list)}")
+              
+              with open(output_file, 'w', encoding='utf-8') as f:
+                  json.dump(index_list, f, indent=2)
+                  
+              print("🎉 Indexing complete!")
+
+          except Exception as main_err:
+              print(f"🔥 CRITICAL ERROR: {main_err}")
+              sys.exit(1)
+          EOF
+
+      - name: Run Indexer
+        run: python3 indexer.py
+
+      - name: Commit and Push
         run: |
           git config --global user.name 'Flowork Bot'
           git config --global user.email 'bot@flowork.cloud'
           
           git add marketplace.json
           
-          # Cek apakah ada perubahan, kalau ada baru commit
+          # Cek apakah ada perubahan sebelum commit
           if git diff --staged --quiet; then
             echo "No changes to marketplace.json"
           else
-            git commit -m "Auto-update marketplace.json [skip ci]"
+            git commit -m "Auto-update marketplace index [skip ci]"
             git push
           fi
