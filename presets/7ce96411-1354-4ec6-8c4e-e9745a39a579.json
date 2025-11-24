@@ -1,0 +1,283 @@
+{
+  "id": "7ce96411-1354-4ec6-8c4e-e9745a39a579",
+  "meta": {
+    "name": "MASS VIDEO",
+    "description": "GENERATE VIDEO",
+    "author": "0xe6d8dddfd7190d8c2ce4c1ec33a4bca12d7acfba",
+    "price": 0,
+    "type": "preset",
+    "created_at": 1763982811256
+  },
+  "content": {
+    "nodes": [
+      {
+        "id": "b46fa298-197c-45ea-958f-838e96b79319",
+        "name": "Batch Video Splitter",
+        "x": -267.5879061799736,
+        "y": 91.47149699531195,
+        "module_id": "batch_video_splitter_c3d4",
+        "config_values": {
+          "segment_duration": 2,
+          "folder_pairs": [
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 1",
+              "output": "/mnt/videos/hasil/proses_1/video_1"
+            },
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 2",
+              "output": "/mnt/videos/hasil/proses_1/video_2"
+            },
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 3",
+              "output": "/mnt/videos/hasil/proses_1/video_3"
+            },
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 4",
+              "output": "/mnt/videos/hasil/proses_1/video_4"
+            },
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 5",
+              "output": "/mnt/videos/hasil/proses_1/video_5"
+            },
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 6",
+              "output": "/mnt/videos/hasil/proses_1/video_6"
+            },
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 7",
+              "output": "/mnt/videos/hasil/proses_1/video_7"
+            },
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 8",
+              "output": "/mnt/videos/hasil/proses_1/video_8"
+            },
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 9",
+              "output": "/mnt/videos/hasil/proses_1/video_9"
+            },
+            {
+              "source": "/mnt/videos/HOOK VIDEO CREATOR/video/materi 10",
+              "output": "/mnt/videos/hasil/proses_1/video_10"
+            }
+          ],
+          "process_timeout": 600
+        }
+      },
+      {
+        "id": "a8747cc2-dfae-4c46-8f5e-693aa9040d39",
+        "name": "Dynamic Media Stitcher",
+        "x": 76.14677639283573,
+        "y": 29.349227553984854,
+        "module_id": "Dynamic Media Stitcher",
+        "config_values": {
+          "job_list": [
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_1",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 1",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_1"
+            },
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_2",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 2",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_2"
+            },
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_3",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 3",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_3"
+            },
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_4",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 4",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_4"
+            },
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_5",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 5",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_5"
+            },
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_6",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 6",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_6"
+            },
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_7",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 7",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_7"
+            },
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_8",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 8",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_8"
+            },
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_9",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 9",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_9"
+            },
+            {
+              "video_folder": "/mnt/videos/hasil/proses_1/video_10",
+              "audio_folder": "/mnt/videos/HOOK VIDEO CREATOR/sound/part 10",
+              "output_folder": "/mnt/videos/hasil/proses_2/video_10"
+            }
+          ],
+          "duration_reference": "audio",
+          "original_audio_mode": "replace",
+          "original_audio_volume": 0,
+          "add_subtitles": true,
+          "correction_dictionary": "flowwork: Flowork\nflo work: Flowork\nteeta: Teetah",
+          "subtitle_model_size": "base",
+          "subtitle_effect_style": "Karaoke",
+          "subtitle_font": "Arial",
+          "subtitle_font_size": 50,
+          "subtitle_primary_color": "#FFFFFF",
+          "subtitle_secondary_color": "#FFFF00",
+          "subtitle_style": "Outline",
+          "process_timeout": 1200
+        }
+      },
+      {
+        "id": "746aa487-320e-40b0-b3c8-fa9dde3a50fa",
+        "name": "POPUP DEBUGING",
+        "x": 69.36660708908215,
+        "y": 189.46713467890464,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      },
+      {
+        "id": "b2f1164d-a3fa-493b-9266-2f97ca052c04",
+        "name": "Video Storyboard Stitcher",
+        "x": 406.70228355804727,
+        "y": -50.95676714920527,
+        "module_id": "video_storyboard_stitcher_d5e6",
+        "config_values": {
+          "video_sections": [
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_1"
+            },
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_2"
+            },
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_3"
+            },
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_4"
+            },
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_5"
+            },
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_6"
+            },
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_7"
+            },
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_8"
+            },
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_9"
+            },
+            {
+              "folder_path": "/mnt/videos/hasil/proses_2/video_10"
+            }
+          ],
+          "output_folder": "/mnt/videos/hasil/proses_3",
+          "output_filename_prefix": "storyboard_stitch",
+          "delete_after_use": true
+        }
+      },
+      {
+        "id": "7435d13c-ff2a-4fc2-89be-748df7a0821c",
+        "name": "POPUP DEBUGING",
+        "x": 390.70228355804727,
+        "y": 188.04323285079465,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      },
+      {
+        "id": "97fd8a32-6538-4b06-bc44-15fdfb6e6216",
+        "name": "POPUP DEBUGING",
+        "x": 740.7022835580473,
+        "y": -126.95676714920523,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      },
+      {
+        "id": "ed7055a9-7a66-4f86-a552-dbd205ea0d06",
+        "name": "POPUP DEBUGING",
+        "x": 751.702283558047,
+        "y": 43.04323285079471,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      }
+    ],
+    "connections": [
+      {
+        "id": "edge-892476c8-7b5a-4fc5-877f-b9a2887f9fa3",
+        "source": "b46fa298-197c-45ea-958f-838e96b79319",
+        "target": "a8747cc2-dfae-4c46-8f5e-693aa9040d39",
+        "source_port_name": "success",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-884e0297-1bfb-44b6-a7f3-fae54e27a02e",
+        "source": "b46fa298-197c-45ea-958f-838e96b79319",
+        "target": "746aa487-320e-40b0-b3c8-fa9dde3a50fa",
+        "source_port_name": "error",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-6e4fb743-5a36-42c0-90b0-f57ce2e92a05",
+        "source": "a8747cc2-dfae-4c46-8f5e-693aa9040d39",
+        "target": "7435d13c-ff2a-4fc2-89be-748df7a0821c",
+        "source_port_name": "error",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-60f7cf7f-b6c9-45b5-b9fa-dff193769de3",
+        "source": "a8747cc2-dfae-4c46-8f5e-693aa9040d39",
+        "target": "b2f1164d-a3fa-493b-9266-2f97ca052c04",
+        "source_port_name": "success",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-e35db817-533b-4e0a-a0c0-5da4026381ce",
+        "source": "b2f1164d-a3fa-493b-9266-2f97ca052c04",
+        "target": "97fd8a32-6538-4b06-bc44-15fdfb6e6216",
+        "source_port_name": "success",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-d25667be-8538-4211-a347-6be98867929e",
+        "source": "b2f1164d-a3fa-493b-9266-2f97ca052c04",
+        "target": "ed7055a9-7a66-4f86-a552-dbd205ea0d06",
+        "source_port_name": "error",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      }
+    ],
+    "global_loop_config": {
+      "isEnabled": false,
+      "iterations": 1,
+      "isDelayEnabled": false,
+      "delayType": "static",
+      "delayStatic": 1,
+      "delayRandomMin": 1,
+      "delayRandomMax": 5
+    }
+  }
+}
