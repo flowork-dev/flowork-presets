@@ -1,0 +1,74 @@
+{
+  "id": "ebd71a12-e2ca-470c-b182-0db3283d7592",
+  "meta": {
+    "name": "yt_seo",
+    "description": "YOUTUBE ANALYTIC",
+    "author": "0xfcf6ebb0d65065c2f6a657856a7c722f047e7048",
+    "price": 0,
+    "type": "preset",
+    "created_at": 1765033884967
+  },
+  "content": {
+    "nodes": [
+      {
+        "id": "237b26c6-9db5-410f-a773-5ad3cad9cbb7",
+        "name": "YouTube Keyword Researcher",
+        "x": 206.5,
+        "y": 300,
+        "module_id": "youtube_keyword_researcher_v1",
+        "config_values": {
+          "research_depth": "Deep (Whisper AI Analysis)",
+          "whisper_model": "tiny",
+          "language_hint": "id",
+          "video_url": "https://www.youtube.com/watch?v=TSly6bSb8rc",
+          "output_folder": "/mnt/videos/hasil"
+        }
+      },
+      {
+        "id": "964f3c55-b517-4726-8498-dc930432e24e",
+        "name": "POPUP DEBUGING",
+        "x": 520,
+        "y": 235.5,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      },
+      {
+        "id": "0296027c-cb18-41d6-9920-a26bbf26565f",
+        "name": "POPUP DEBUGING",
+        "x": 571,
+        "y": 351.5,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      }
+    ],
+    "connections": [
+      {
+        "id": "edge-0c97c818-d5d0-42db-9b0a-17f27679d591",
+        "source": "237b26c6-9db5-410f-a773-5ad3cad9cbb7",
+        "target": "964f3c55-b517-4726-8498-dc930432e24e",
+        "source_port_name": "success",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-07045055-3440-4828-8b2b-6513a29c1558",
+        "source": "237b26c6-9db5-410f-a773-5ad3cad9cbb7",
+        "target": "0296027c-cb18-41d6-9920-a26bbf26565f",
+        "source_port_name": "error",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      }
+    ],
+    "global_loop_config": {
+      "isEnabled": false,
+      "iterations": 1,
+      "isDelayEnabled": false,
+      "delayType": "static",
+      "delayStatic": 1,
+      "delayRandomMin": 1,
+      "delayRandomMax": 5
+    }
+  }
+}
