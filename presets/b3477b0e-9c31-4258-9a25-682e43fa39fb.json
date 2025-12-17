@@ -1,0 +1,197 @@
+{
+  "id": "b3477b0e-9c31-4258-9a25-682e43fa39fb",
+  "meta": {
+    "name": "golden_moment",
+    "description": "",
+    "author": "0xfcf6ebb0d65065c2f6a657856a7c722f047e7048",
+    "price": 0,
+    "type": "preset",
+    "created_at": 1765978259701
+  },
+  "content": {
+    "nodes": [
+      {
+        "id": "6e697318-61b6-4fcc-8a6f-542becd569ab",
+        "name": "Folder Purge (Cleaner)",
+        "x": -18.09351145752062,
+        "y": 96.81062902468835,
+        "module_id": "folder_purge_v1",
+        "config_values": {
+          "safety_lock": true,
+          "target_folder": "/mnt/videos/golden moment/1DOWNLOAD"
+        }
+      },
+      {
+        "id": "1f2283aa-d067-496a-9b34-d8bdda48796c",
+        "name": "Universal Stream Downloader",
+        "x": 243.8480682290401,
+        "y": -26.977897371462745,
+        "module_id": "universal_downloader_v1",
+        "config_values": {
+          "format_mode": "best",
+          "url": "https://youtu.be/e-Fy0JxA9FM?si=XOJSV_E5zFOZDKgl",
+          "output_folder": "/mnt/videos/golden moment/1DOWNLOAD"
+        }
+      },
+      {
+        "id": "7f21acb7-0f2b-4429-840b-688ac6d0c536",
+        "name": "Folder Purge (Cleaner)",
+        "x": 626.5716512062675,
+        "y": -29.36446558680038,
+        "module_id": "folder_purge_v1",
+        "config_values": {
+          "safety_lock": true,
+          "target_folder": "/mnt/videos/golden moment/CLIPER_1"
+        }
+      },
+      {
+        "id": "b7980d3a-bf58-47cb-ba02-6dd0591b291f",
+        "name": "POPUP DEBUGING",
+        "x": 241.21384768168605,
+        "y": 192.07381897587516,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      },
+      {
+        "id": "38b42f45-cae8-40e3-89bc-5ea79e59f63d",
+        "name": "POPUP DEBUGING",
+        "x": 523.6022259519549,
+        "y": 344.8275592231283,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      },
+      {
+        "id": "b55694cf-bd22-4580-895b-299cbf11513e",
+        "name": "POPUP DEBUGING",
+        "x": 1025.8564615090877,
+        "y": 220.5221960029644,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      },
+      {
+        "id": "d697031d-4845-4dae-972c-17c448ba3ced",
+        "name": "Golden Moment Clipper",
+        "x": 991.1208294388587,
+        "y": -118.07429668975811,
+        "module_id": "golden_moment_clipper_v1",
+        "config_values": {
+          "timestamps": "00:00:13 - 00:00:33\n00:00:44 - 00:00:50\n00:01:29 - 00:01:35\n00:02:37 - 00:02:48\n00:05:20 - 00:05:43\n00:07:14 - 00:07:27\n00:08:36 - 00:08:50\n00:09:05 - 00:09:23\n00:10:23 - 00:10:32\n00:10:40 - 00:10:55",
+          "whisper_model": "large-v2",
+          "smart_cut_mode": true,
+          "resize_mode": "podcast_split",
+          "remove_silence": true,
+          "silence_threshold": 30,
+          "safety_margin": 100,
+          "add_subtitles": true,
+          "subtitle_size": 65,
+          "watermark_text": "MADE WITH FLOWORK.cloud",
+          "watermark_size": 45,
+          "enable_outro": true,
+          "merge_clips": false,
+          "input_folder_path": "/mnt/videos/golden moment/1DOWNLOAD",
+          "closing_video_path": "/mnt/videos/CLOSING/CLOSING.mp4",
+          "output_folder": "/mnt/videos/golden moment/CLIPER_1"
+        }
+      },
+      {
+        "id": "f854f24b-3d7d-400b-be1c-f8d16cf8cf55",
+        "name": "POPUP DEBUGING",
+        "x": 1433.369696112717,
+        "y": -290.3790499393134,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      },
+      {
+        "id": "5fbc1225-0638-4bfc-a3c8-6534b732a1c8",
+        "name": "POPUP DEBUGING",
+        "x": 1527.562961222474,
+        "y": -38.81411019496269,
+        "module_id": "debug_popup_module",
+        "config_values": {}
+      }
+    ],
+    "connections": [
+      {
+        "id": "edge-18ee62e7-f914-4dec-816d-16166c8c24a6",
+        "source": "1f2283aa-d067-496a-9b34-d8bdda48796c",
+        "target": "7f21acb7-0f2b-4429-840b-688ac6d0c536",
+        "source_port_name": "success",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-18cebd81-dfda-4d0c-8278-012cbc004ab8",
+        "source": "6e697318-61b6-4fcc-8a6f-542becd569ab",
+        "target": "1f2283aa-d067-496a-9b34-d8bdda48796c",
+        "source_port_name": "success",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-7e009587-34a6-4222-80dd-3de7079a51d1",
+        "source": "1f2283aa-d067-496a-9b34-d8bdda48796c",
+        "target": "38b42f45-cae8-40e3-89bc-5ea79e59f63d",
+        "source_port_name": "error",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-0a74ff0f-88b5-4a0e-af22-1e74ed87b354",
+        "source": "7f21acb7-0f2b-4429-840b-688ac6d0c536",
+        "target": "b55694cf-bd22-4580-895b-299cbf11513e",
+        "source_port_name": "error",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-55d4578d-d08c-48fd-b16e-f3cd26cb1b8b",
+        "source": "6e697318-61b6-4fcc-8a6f-542becd569ab",
+        "target": "b7980d3a-bf58-47cb-ba02-6dd0591b291f",
+        "source_port_name": "error",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-b86c0702-78a3-4472-842a-d6da7c5df846",
+        "source": "7f21acb7-0f2b-4429-840b-688ac6d0c536",
+        "target": "d697031d-4845-4dae-972c-17c448ba3ced",
+        "source_port_name": "success",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-92827d55-e0fa-422b-a1d3-9bd06724fd04",
+        "source": "d697031d-4845-4dae-972c-17c448ba3ced",
+        "target": "f854f24b-3d7d-400b-be1c-f8d16cf8cf55",
+        "source_port_name": "success",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      },
+      {
+        "id": "edge-7727aac7-28d6-4645-9a5b-af0654e5e948",
+        "source": "d697031d-4845-4dae-972c-17c448ba3ced",
+        "target": "5fbc1225-0638-4bfc-a3c8-6534b732a1c8",
+        "source_port_name": "error",
+        "target_port_name": "input",
+        "type": "default",
+        "animated": true
+      }
+    ],
+    "global_loop_config": {
+      "isEnabled": false,
+      "iterations": 1,
+      "isDelayEnabled": false,
+      "delayType": "static",
+      "delayStatic": 1,
+      "delayRandomMin": 1,
+      "delayRandomMax": 5
+    }
+  }
+}
